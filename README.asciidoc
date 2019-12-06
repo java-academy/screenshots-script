@@ -1,0 +1,37 @@
+:icons: font
+
+= Screenshots script
+
+Short script to make screenshots and save them in predefined directory.
+
+== Specification
+
+. Write a `bash` script.
+. The script should take a screenshot.
+. The screenshot's name should contain date and time of taking.
+. All the screenshots should be saved in a predefined directory.
+. The directory's name should contain date without time when all screenshots inside was taken.
+Basically for each day new directory should be created with appropriate date.
+
+== Cron
+
+About link:https://en.wikipedia.org/wiki/Cron[cron].
+
+To add new task to `cron` use command `crontab -e` and edit the file.
+
+CAUTION: In `cron` days are count from 0 to 6 where 0 is *Sunday* and 6 is *Saturday*.
+
+To fulfil specification it should look similar to code below:
+
+[code, bash]
+----
+*/15 * * * * export DISPLAY=:0 && $HOME/DIR_OF_YOUR_SCRIPT/screenshot.sh
+----
+
+Where `DIR_OF_YOUR_SCRIPT` is actual directory of your script.
+
+To test your `cron` setup you can use link:https://crontab.guru/[cron guru].
+
+WARNING: Remember to give your script the access permissions to file system objects (files and directories).
+For example use command `link:https://en.wikipedia.org/wiki/Chmod[chmod] +x YOUR_SCRIP.sh`
+where `YOUR_SCRIP` is actual name of script.
